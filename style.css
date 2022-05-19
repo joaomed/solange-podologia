@@ -1,5 +1,7 @@
+/*==================== GERAL ====================*/
 *{
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -16,37 +18,67 @@
 
   --brand-beige: hsl(39, 100%, 97%);
 
+  --nav-height: 7.2rem;
+
   font-size: 62.5%; /* 1rem = 10px */
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
 }
 
 body{
   font-family: 'DM Sans';
   font-size: 1.6rem;
   text-align: center;  
+  overflow: overlay;
 }
+
+.wrapper{
+  width: 37.5rem;
+  margin-inline: auto;
+  padding-inline: 2.4rem;
+}
+
+ul {
+  list-style: none;
+}
+
+/*==================== HEADER ====================*/
 
 header {  
-  width: 37.5rem;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 4.1rem;
+  margin-top: calc(4.1rem + var(--nav-height));
 }
 
-h4{
+header::before{
+  content: "";
+  width: 100%;
+  height: calc(125rem + var(--nav-height)) ;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-color: var(--brand-violet-light-02);
+}
+
+header h4{
   font-size: 1.4rem;
   color: var(--brand-violet-light);
   line-height: 150%;
   margin-bottom: 1.6rem;  
 }
 
-h1 {
-  font-size: 3.4rem;
+header h1 {
+  font-size: 3.0rem;
   color: var(--gray-headline);
   line-height: 130%;
   margin-bottom: 2.4rem;
 }
 
-p{
+header p{
   font-size: 1.8rem;
   color: var(--gray-paragraph);
   font-weight: 400;
@@ -54,7 +86,7 @@ p{
   margin-bottom: 3.2rem;
 }
 
-button {
+header button {
   height: 5.2rem;
   width: 26.3rem;
   background-color: var(--brand-violet-light);
@@ -118,14 +150,159 @@ header img {
   color: var(--brand-violet-light);
 }
 
-header::before{
-  content: "";
+/*==================== NAVIGATION ====================*/
+
+.logo {
+  text-decoration: none;
+  color: var(--gray-headline);
+  font-size: 2rem;
+}
+
+.logo span {
+  color: var(--brand-violet-light);
+  font-weight: 700;
+}
+
+nav {  
+  display: flex;  
+  height: var(--nav-height);
+
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%); 
   width: 100vw;
-  height: 125rem;
-  display: block;
-  position: absolute;
+}
+
+nav .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav.scroll {
+  background-color: var(--brand-violet-light);
+  width: 100vw;
+}
+
+nav.scroll .logo {
+  color: var(--brand-violet-light-03);  
+}
+
+nav.scroll .logo span {
+  color: white;
+}
+
+nav.scroll svg path {
+  stroke: white;
+}
+
+nav button{
+  background: none;
+  border: none;
+  cursor: pointer ;
+}
+
+/*==================== MENU EXPANDED ====================*/
+
+body.menu-expanded {
+  overflow: hidden;
+}
+
+body.menu-expanded > :not(nav){
+  display: none;
+}
+
+.menu,
+.close-menu,
+body.menu-expanded .open-menu{
+  opacity: 0;
+  visibility: hidden;
+}
+
+body.menu-expanded .menu,
+body.menu-expanded .close-menu{
+  opacity: 1;
+  visibility: visible;
+}
+
+body.menu-expanded .menu {
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: -1;
-  background-color: var(--brand-violet-light-02);
+
+  padding-top: var(--nav-height);
+
+  background-color: var(--brand-violet);
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
 }
+
+
+body.menu-expanded nav{
+  position: relative;
+}
+
+.menu ul{ 
+  display: flex;
+  flex-direction: column;
+  gap: 4.8rem;  
+  margin-top: 6rem;  
+  margin-inline: auto;
+
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 3.1rem;   
+}
+
+.menu ul a{
+  text-decoration: none;  
+  color: white;
+}
+
+.menu .button {
+  background-color: white;
+  border-radius: 4rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 2.3rem;
+  text-transform: uppercase;
+  color: var(--brand-violet);
+
+  display: inline-block;
+  padding: 1.6rem 3.2rem;
+}
+
+.menu ul.social-links {
+  margin-top: 8rem;   
+  flex-direction: row;
+  gap: 3.2rem;
+}
+
+body.menu-expanded .logo,
+body.menu-expanded button{
+  position: relative;
+  z-index: 100;
+}
+
+body.menu-expanded .logo {
+  color: var(--brand-violet-light-03);  
+}
+
+body.menu-expanded .logo span {
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
