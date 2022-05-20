@@ -1,10 +1,23 @@
 // quando rodar o Scroll
 
 function onScroll() {
+  showNavOnScroll()
+  showBackToTopButtonOnScroll()
+}
+
+function showNavOnScroll() {
   if (scrollY == 0) {
     navigation.classList.remove('scroll')
   } else {
     navigation.classList.add('scroll')
+  }
+}
+
+function showBackToTopButtonOnScroll() {
+  if (scrollY < 1000) {
+    backToTopButton.classList.remove('show')
+  } else {
+    backToTopButton.classList.add('show')
   }
 }
 
@@ -32,5 +45,4 @@ ScrollReveal({
 #about,
 #about header,
 #about .content
-
 `)

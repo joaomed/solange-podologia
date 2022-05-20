@@ -94,6 +94,36 @@ section .content p {
   color: var(--gray-paragraph);  
 }
 
+
+.button {
+  background-color: var(--brand-violet-light); 
+
+  padding: 1.6rem 3.2rem;
+  width: fit-content;
+  margin-bottom: 6rem;
+  border-radius: 4rem;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*Gap: espaço entre os itens */
+  gap: 1.6rem;  
+
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.8rem;
+  text-transform: uppercase;
+  color: white;
+  text-decoration: none;
+
+  transition: background 200ms;
+}
+
+.button:hover {
+  background-color: var(--brand-violet);
+}
+
 /*==================== NAVIGATION ====================*/
 
 .logo {
@@ -279,28 +309,9 @@ body.menu-expanded button path {
   margin-bottom: 3.2rem;
 }
 
-#home button {
-  height: 5.2rem;
-  width: 26.3rem;
-  background-color: var(--brand-violet-light);
-  margin-bottom: 6rem;
-  border-radius: 4rem;
-  border: none;
-
+#home .button {
   margin-right: auto;
   margin-left: auto;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /*Gap: espaço entre os itens */
-  gap: 1.6rem;  
-
-  font-size: 1.4rem;
-  font-weight: 700;
-  line-height: 1.8rem;
-  text-transform: uppercase;
-  color: white;
 }
 
 #home img {
@@ -390,6 +401,89 @@ border-radius: .6rem;
   margin-top: 2.4rem;
   margin-bottom: 6rem;
 }
+
+/*==================== CONTACT ====================*/
+
+#contact,
+#contact header h2 {
+  text-align: left;
+}
+
+#contact header {
+  margin-bottom: 3.2rem;
+}
+
+#contact ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin-bottom: 3.2rem;
+}
+
+#contact ul li {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+
+}
+
+/*==================== FOOTER ====================*/
+
+footer {
+  background-color: var(--brand-violet-light);
+  padding-block: 6rem;
+  text-align: left;  
+}
+
+footer .logo {  
+  display: inline-block;
+
+  font-size: 4rem;
+  color: var(--brand-violet-light-03);
+  margin-bottom: 2.4rem;
+}
+
+footer .logo span {
+  color: white;
+}
+
+footer p {
+  color: var(--brand-beige);  
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 3rem;
+
+  display: flex;
+  margin-bottom: 3.2rem;
+}
+
+footer .social-links {
+  display: flex;
+  gap: 3.2rem;
+}
+
+/*==================== BackToMenuButton ====================*/
+
+#backToTopButton {
+  position: fixed;
+  bottom: 1rem;
+  right: 2.5rem;
+
+}
+
+#backToTopButton {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#backToTopButton.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+
+
 
 
 
