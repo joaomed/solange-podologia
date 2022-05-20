@@ -1,5 +1,5 @@
 /*==================== GERAL ====================*/
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -23,6 +23,10 @@
   font-size: 62.5%; /* 1rem = 10px */
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   width: 100%;
@@ -34,6 +38,8 @@ body{
   font-size: 1.6rem;
   text-align: center;  
   overflow: overlay;
+
+  background-color: var(--gray-light);
 }
 
 .wrapper{
@@ -46,13 +52,176 @@ ul {
   list-style: none;
 }
 
-/*==================== HEADER ====================*/
-
-header {  
-  margin-top: calc(4.1rem + var(--nav-height));
+section {
+  padding-block: 10rem;
 }
 
-header::before{
+/*==================== NAVIGATION ====================*/
+
+.logo {
+  text-decoration: none;
+  color: var(--gray-headline);
+  font-size: 2rem;
+}
+
+.logo span {
+  color: var(--brand-violet-light);
+  font-weight: 700;
+}
+
+nav {  
+  display: flex;  
+  height: var(--nav-height);
+
+  position: fixed;
+  top: 0;
+  width: 100vw;
+
+  z-index: 100;
+}
+
+nav .wrapper {
+  display: flex;
+  align-items: center;
+  gap: 11.7rem;
+}
+
+nav.scroll {
+  background-color: var(--brand-violet-light);
+}
+
+nav.scroll .logo {
+  color: var(--brand-violet-light-03);  
+}
+
+nav.scroll .logo span {
+  color: white;
+}
+
+nav.scroll svg path {
+  stroke: white;
+}
+
+nav button{
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/*==================== MENU EXPANDED ====================*/
+
+body.menu-expanded {
+  overflow: hidden;
+}
+
+body.menu-expanded > :not(nav){
+  visibility: hidden;
+}
+
+.menu,
+.close-menu,
+body.menu-expanded .open-menu{
+  opacity: 0;
+  visibility: hidden;
+}
+
+body.menu-expanded .menu,
+body.menu-expanded .close-menu{
+  opacity: 1;
+  visibility: visible;
+}
+
+/*Arrumando erro de Padding */
+body.menu-expanded nav .wrapper{
+  gap: 3.8rem;
+}
+
+.menu {
+  transform: translateY(100%);
+}
+
+body.menu-expanded .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--brand-violet);
+
+  padding-top: var(--nav-height);
+
+  width: 100vw;
+  height: 100vh;
+
+  transition: transform 300ms;
+  transform: translateY(0);
+}
+
+.menu ul:nth-child(1) { 
+  display: flex;
+  flex-direction: column;
+  gap: 4.8rem;  
+  margin-top: 6rem;  
+
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 3.1rem;   
+}
+
+.menu ul li a{
+  color: white;
+  text-decoration: none;  
+}
+
+.menu .button {
+  background: white;
+  border-radius: 4rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 2.3rem;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  color: var(--brand-violet);
+
+  display: inline-block;
+  padding: 1.6rem 3.2rem;
+
+  margin-top: 4.8rem;
+  margin-bottom: 8rem;
+
+}
+
+.menu .social-links {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  gap: 3.2rem;
+}
+
+body.menu-expanded .logo,
+body.menu-expanded button{
+  position: relative;
+  z-index: 10;
+}
+
+body.menu-expanded .logo {
+  color: var(--brand-violet-light-03);  
+}
+
+body.menu-expanded .logo span {
+  color: white;
+}
+
+body.menu-expanded button path {
+  stroke: white;
+}
+
+/*==================== HEADER ====================*/
+
+#home {  
+  padding-top: calc(4.1rem + var(--nav-height));
+}
+
+#home::before{
   content: "";
   width: 100%;
   height: calc(125rem + var(--nav-height)) ;
@@ -64,21 +233,21 @@ header::before{
   background-color: var(--brand-violet-light-02);
 }
 
-header h4{
+#home h4{
   font-size: 1.4rem;
   color: var(--brand-violet-light);
   line-height: 150%;
   margin-bottom: 1.6rem;  
 }
 
-header h1 {
+#home h1 {
   font-size: 3.0rem;
   color: var(--gray-headline);
   line-height: 130%;
   margin-bottom: 2.4rem;
 }
 
-header p{
+#home p{
   font-size: 1.8rem;
   color: var(--gray-paragraph);
   font-weight: 400;
@@ -86,7 +255,7 @@ header p{
   margin-bottom: 3.2rem;
 }
 
-header button {
+#home button {
   height: 5.2rem;
   width: 26.3rem;
   background-color: var(--brand-violet-light);
@@ -110,12 +279,12 @@ header button {
   color: white;
 }
 
-header img {
+#home img {
   width: 40rem;
   margin-bottom: 0rem;
 }
 
-.detalhes {  
+#home .detalhes {  
   width: 32.7rem;
   height: 47rem;
   background-color: var(--brand-beige);
@@ -136,166 +305,79 @@ header img {
   /*padding-block: 4rem;*/
 }
 
-.detalhe h3{
+#home .detalhe h3{
   font-size: 4.8rem;
   line-height: 130%;
   color: var(--gray-headline);
   margin-bottom: 0.4rem;
 }
 
-.detalhe p{
+#home .detalhe p{
   margin: 0;
   font-weight: 400;
   line-height: 150%;
   color: var(--brand-violet-light);
 }
 
-/*==================== NAVIGATION ====================*/
+/*==================== SERVICES ====================*/
 
-.logo {
-  text-decoration: none;
-  color: var(--gray-headline);
-  font-size: 2rem;
+#services {
+  background-color: var(--gray-light);
 }
 
-.logo span {
+#services header h4 {
+  font-size: 1.4rem;
+  line-height: 150%;
+  letter-spacing: 0.08rem;
+
   color: var(--brand-violet-light);
-  font-weight: 700;
-}
 
-nav {  
-  display: flex;  
-  height: var(--nav-height);
-
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%); 
-  width: 100vw;
-}
-
-nav .wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-nav.scroll {
-  background-color: var(--brand-violet-light);
-  width: 100vw;
-}
-
-nav.scroll .logo {
-  color: var(--brand-violet-light-03);  
-}
-
-nav.scroll .logo span {
-  color: white;
-}
-
-nav.scroll svg path {
-  stroke: white;
-}
-
-nav button{
-  background: none;
-  border: none;
-  cursor: pointer ;
-}
-
-/*==================== MENU EXPANDED ====================*/
-
-body.menu-expanded {
-  overflow: hidden;
-}
-
-body.menu-expanded > :not(nav){
-  display: none;
-}
-
-.menu,
-.close-menu,
-body.menu-expanded .open-menu{
-  opacity: 0;
-  visibility: hidden;
-}
-
-body.menu-expanded .menu,
-body.menu-expanded .close-menu{
-  opacity: 1;
-  visibility: visible;
-}
-
-body.menu-expanded .menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  padding-top: var(--nav-height);
-
-  background-color: var(--brand-violet);
-  width: 100vw;
-  height: 100vh;
-
-  display: flex;
-  flex-direction: column;
-}
-
-
-body.menu-expanded nav{
-  position: relative;
-}
-
-.menu ul{ 
-  display: flex;
-  flex-direction: column;
-  gap: 4.8rem;  
-  margin-top: 6rem;  
-  margin-inline: auto;
-
-  font-size: 2.4rem;
-  font-weight: 700;
-  line-height: 3.1rem;   
-}
-
-.menu ul a{
-  text-decoration: none;  
-  color: white;
-}
-
-.menu .button {
-  background-color: white;
-  border-radius: 4rem;
-  font-weight: 700;
-  font-size: 1.8rem;
-  line-height: 2.3rem;
   text-transform: uppercase;
-  color: var(--brand-violet);
-
-  display: inline-block;
-  padding: 1.6rem 3.2rem;
 }
 
-.menu ul.social-links {
-  margin-top: 8rem;   
-  flex-direction: row;
-  gap: 3.2rem;
+#services header h2 {
+  font-size: 3rem;
+  line-height: 3.9rem;
+  text-align: center;
+
+  color: var(--gray-headline);
+
+  margin-top: 1.6rem;
+  margin-bottom: 6rem;
 }
 
-body.menu-expanded .logo,
-body.menu-expanded button{
-  position: relative;
-  z-index: 100;
+#services .cards {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem
 }
 
-body.menu-expanded .logo {
-  color: var(--brand-violet-light-03);  
+#services .card {
+  padding: 2.4rem; 
+
+ text-align: left;
+
+ background-color: white;
+border: 1px solid var(--brand-violet-light-03);
+border-radius: .6rem;
 }
 
-body.menu-expanded .logo span {
-  color: white;
+#services .card h3 {
+  font-size: 2.4rem;
+  line-height: 3.1rem;
+
+  margin-block: 1.6rem;
+
+  color: var(--gray-headline);
+
 }
 
+#services .card p {
+  font-size: 1.6rem;
+  line-height: 150%;
+
+  color: var(--gray-paragraph);
+}
 
 
 

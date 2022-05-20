@@ -13,22 +13,81 @@
       rel="stylesheet"
     />
   </head>
-  <body onscroll="onScroll()" class="">
-    <nav id="navigation" class="">
+  <body onscroll="onScroll()">
+    <nav id="navigation">
       <div class="wrapper">
-        <a class="logo" href="#">Solange<span>Podologia</span>.</a>
+        <a class="logo" href="#home">Solange<span>Podologia</span>.</a>
+
+        <button
+          aria-expanded="false"
+          aria-label="Abrir menu"
+          onclick="openMenu()"
+          class="open-menu"
+        >
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 20H30"
+              stroke="#5F3DC4"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M10 12H30"
+              stroke="#5F3DC4"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M18 28L30 28"
+              stroke="#5F3DC4"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+
+        <button
+          aria-expanded="true"
+          aria-label="Fechar menu"
+          onclick="closeMenu()"
+          class="close-menu"
+        >
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M30 10L10 30M10 10L30 30"
+              stroke="#FFFAF1"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+
         <div class="menu">
           <ul>
-            <li><a href="#">Início</a></li>
-            <li><a href="#">Sobre</a></li>
-            <li><a href="#">Serviços</a></li>
-            <li"><a class="button" href="#">Agende sua consulta</a></li>
+            <li><a onclick="closeMenu()" href="#home">Início</a></li>
+            <li><a onclick="closeMenu()" href="#services">Serviços</a></li>
+            <li><a onclick="closeMenu()" href="#about">Sobre</a></li>
           </ul>
+          <a class="button" href="#">Agende sua consulta</a>
           <ul class="social-links">
             <li>
-              <a 
-              target="_blank"
-              href="https://instagram.com">
+              <a target="_blank" href="https://instagram.com">
                 <svg
                   width="24"
                   height="24"
@@ -61,9 +120,7 @@
               </a>
             </li>
             <li>
-              <a 
-              target="_blank"
-              href="https://facebook.com">
+              <a target="_blank" href="https://facebook.com">
                 <svg
                   width="24"
                   height="24"
@@ -82,9 +139,7 @@
               </a>
             </li>
             <li>
-              <a
-              target="_blank"
-              href="https://youtube.com">
+              <a target="_blank" href="https://youtube.com">
                 <svg
                   width="24"
                   height="24"
@@ -111,68 +166,11 @@
             </li>
           </ul>
         </div>
-
-        <button
-        aria-expanded="false"
-        aria-label="Abrir menu" 
-        onclick="openMenu()"
-        class="open-menu">
-          <svg
-            width="40"
-            height="40"
-            viewBox="0 0 40 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 20H30"
-              stroke="#5F3DC4"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M10 12H30"
-              stroke="#5F3DC4"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M18 28L30 28"
-              stroke="#5F3DC4"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
-        <button
-        aria-expanded="true"
-        aria-label="Fechar menu"  
-        onclick="closeMenu()"
-        class="close-menu">
-          <svg
-            width="40"
-            height="40"
-            viewBox="0 0 40 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M30 10L10 30M10 10L30 30"
-              stroke="#FFFAF1"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
       </div>
     </nav>
 
-    <header class="wrapper">
-      <section>
+    <header id="home">
+      <div class="wrapper">
         <h4>BOAS-VINDAS A SOLANGE PODOLOGIA 🦶</h4>
         <h1>Assistência Podologia simplificada para todos</h1>
         <p>
@@ -196,28 +194,138 @@
           Agende sua consulta
         </button>
         <img src="assets/foto.png" alt="mulher" />
-      </section>
-      <div class="detalhes">
-        <div class="detalhe">
-          <h3>+3.500</h3>
-          <p>Pacientes Atendidos</p>
-        </div>
-        <div class="detalhe">
-          <h3>+15</h3>
-          <p>Especialistas disponíveis</p>
-        </div>
-        <div class="detalhe">
-          <h3>+10</h3>
-          <p>Anos no mercado</p>
+
+        <div class="detalhes">
+          <div class="detalhe">
+            <h3>+3.500</h3>
+            <p>Pacientes Atendidos</p>
+          </div>
+          <div class="detalhe">
+            <h3>+15</h3>
+            <p>Especialistas disponíveis</p>
+          </div>
+          <div class="detalhe">
+            <h3>+10</h3>
+            <p>Anos no mercado</p>
+          </div>
         </div>
       </div>
     </header>
-    <main>
-      <section></section>
-      <section></section>
-    </main>
+
+    <section id="services">
+      <div class="wrapper">
+        <header>
+          <h4>Serviços</h4>
+          <h2>Como posso ajudá-lo a se sentir melhor?</h2>
+        </header>
+        <div class="cards">
+          <div class="card">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="12" cy="12" r="12" fill="#F3F0FF" />
+              <path
+                d="M17.091 8.18188L10.091 15.1819L6.90918 12.0001"
+                stroke="#5F3DC4"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <h3>Problemas digestivos</h3>
+            <p>
+              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+              amet sint. Velit officia consequat duis enim.
+            </p>
+          </div>
+
+          <div class="card">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="12" cy="12" r="12" fill="#F3F0FF" />
+              <path
+                d="M17.091 8.18188L10.091 15.1819L6.90918 12.0001"
+                stroke="#5F3DC4"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <h3>Problemas digestivos</h3>
+            <p>
+              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+              amet sint. Velit officia consequat duis enim.
+            </p>
+          </div>
+
+          <div class="card">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="12" cy="12" r="12" fill="#F3F0FF" />
+              <path
+                d="M17.091 8.18188L10.091 15.1819L6.90918 12.0001"
+                stroke="#5F3DC4"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <h3>Problemas digestivos</h3>
+            <p>
+              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+              amet sint. Velit officia consequat duis enim.
+            </p>
+          </div>
+
+          <div class="card">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="12" cy="12" r="12" fill="#F3F0FF" />
+              <path
+                d="M17.091 8.18188L10.091 15.1819L6.90918 12.0001"
+                stroke="#5F3DC4"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <h3>Problemas digestivos</h3>
+            <p>
+              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+              amet sint. Velit officia consequat duis enim.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrapper"></div>
+    </section>
+
     <footer>IMPLEMENTAÇÃO EM BREVE</footer>
 
+    <!--Script ScrollReveal Lib-->
+    <script src="https://unpkg.com/scrollreveal"></script>
     <script src="main.js"></script>
   </body>
 </html>
