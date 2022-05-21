@@ -7,8 +7,10 @@
 
 /*raiz do documento*/
 :root{  
-  --brand-violet:hsl(255, 68%, 30%);
-  --brand-violet-light:hsl(255, 53%, 50%);
+  --hue: 255;
+  --brand-violet:hsl(var(--hue), 68%, 30%);
+
+  --brand-violet-light:hsl(var(--hue), 53%, 50%);
   --brand-violet-light-02:hsl(257, 100%, 93%);
   --brand-violet-light-03:hsl(252, 100%, 97%);
 
@@ -43,7 +45,7 @@ body{
 }
 
 .wrapper{
-  width: 37.5rem;
+  width: min(50rem, 100%);
   margin-inline: auto;
   padding-inline: 2.4rem;
 }
@@ -151,7 +153,7 @@ nav {
 nav .wrapper {
   display: flex;
   align-items: center;
-  gap: 11.7rem;
+  justify-content: space-between;
 }
 
 nav.scroll {
@@ -174,6 +176,11 @@ nav button{
   background: none;
   border: none;
   cursor: pointer;
+}
+
+nav .menu,
+nav .close-menu {
+  position: fixed;
 }
 
 /*==================== MENU EXPANDED ====================*/
@@ -199,17 +206,11 @@ body.menu-expanded .close-menu{
   visibility: visible;
 }
 
-/*Arrumando erro de Padding */
-body.menu-expanded nav .wrapper{
-  gap: 3.8rem;
-}
-
 .menu {
   transform: translateY(100%);
 }
 
 body.menu-expanded .menu {
-  position: fixed;
   top: 0;
   left: 0;
   background-color: var(--brand-violet);
@@ -255,6 +256,13 @@ body.menu-expanded .menu {
 
   margin-top: 4.8rem;
   margin-bottom: 8rem;
+}
+
+.menu .button:hover {
+  background: var(--brand-violet-light);
+  color: white;
+
+  filter:brightness(1);
 
 }
 
@@ -320,24 +328,18 @@ body.menu-expanded button path {
 }
 
 #home .detalhes {  
-  width: 32.7rem;
-  height: 47rem;
-  background-color: var(--brand-beige);
+  width: 100%;
+  padding-block: 4rem;
+  margin-inline: auto;
 
-  margin-left: auto;
-  margin-right: auto;
-  /*margin-inline: auto;*/
-  border-radius: 0.6rem;
+  background-color: var(--brand-beige);
   border: 0.1rem solid var(--brand-violet-light-03);
+  border-radius: 0.6rem;
 
   display: flex;
   flex-direction: column;  
   justify-content: center;
   gap: 6rem;
-
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  /*padding-block: 4rem;*/
 }
 
 #home .detalhe h3{
@@ -372,9 +374,9 @@ body.menu-expanded button path {
  text-align: left;
 
  background-color: white;
-border: 1px solid var(--brand-violet-light-03);
-border-radius: .6rem;
-}
+  border: 1px solid var(--brand-violet-light-03);
+  border-radius: .6rem;
+  }
 
 #services .card h3 {
   font-size: 2.4rem;
@@ -438,7 +440,7 @@ footer {
 footer .logo {  
   display: inline-block;
 
-  font-size: 4rem;
+  font-size: 3rem;
   color: var(--brand-violet-light-03);
   margin-bottom: 2.4rem;
 }
@@ -469,18 +471,180 @@ footer .social-links {
   bottom: 1rem;
   right: 2.5rem;
 
-}
-
-#backToTopButton {
   opacity: 0;
   visibility: hidden;
+
+  transform: translateY(100%);
+  transition: 200ms;
+
+  border: 2px solid white;
+  display: flex;
+  border-radius: 10rem;
 }
+
+#backToTopButton circle {
+  fill:  var(--brand-violet-light);
+}
+
 
 #backToTopButton.show {
   opacity: 1;
   visibility: visible;
+  transform: translateY(0);
 }
 
+/*==================== RESPONSIVO ====================*/
+@media (min-width: 1024px){
+  /*==================== Geral ====================*/
+  .wrapper {
+    width: min(112rem, 100%);
+  }
+  /*==================== Menu ====================*/
+  /*==================== Home ====================*/
+  /*==================== Services ====================*/
+  /*==================== About ====================*/
+  /*==================== Contact ====================*/
+  
+  /*==================== Navigation ====================*/
+  /* reset */
+  /*pega todos os elementos dentro do wrapper que está dentro do navigation e vamos resetar*/
+  nav#navigation .wrapper * {
+    margin: 0;
+    padding: 0;
+    display: initial;
+    flex-direction: initial;
+    visibility: initial;
+    opacity: initial;
+    position: initial;
+    transform: initial;
+    color: initial;
+    background-color: initial;
+    font-size: initial;
+    font-weight: initial;
+  }  
+
+  nav#navigation .close-menu,
+  nav#navigation .open-menu,
+  nav#navigation .social-links {
+    display: none;
+  }
+
+  nav#navigation .menu {
+    display:  flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+  }
+
+
+  nav#navigation .logo {
+    text-decoration: none;
+    color: var(--gray-headline);
+    font-size: 2rem;
+  }
+
+  nav#navigation .logo span {
+    color: var(--brand-violet-light);
+    font-weight: 700;
+    font-size: 2rem;
+  }  
+
+  nav#navigation .menu ul:nth-child(1) {
+    display: flex;
+    gap: 3.2rem;
+  }
+
+  nav#navigation .menu ul:nth-child(1) li a {
+    color: var(--brand-violet-light);
+    opacity: 0.7;
+    transition: opacity 400ms;
+  }
+  
+  nav#navigation .menu a.button {
+    color: var(--brand-violet-light);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2.4rem;
+
+    border: 1px solid var(--brand-violet-light);
+    border-radius: 4rem;
+
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    text-transform: uppercase;
+  }
+
+  nav#navigation.scroll .logo {
+    color: var(--brand-violet-light-03);
+  }
+
+  nav#navigation.scroll .logo span {
+    color: white;
+  }
+
+  nav#navigation.scroll .menu ul li a {
+    color: white;
+    opacity: 0.8; 
+  }
+
+  nav#navigation.scroll .menu a.button {
+    color: white;
+    border-color: white;
+  }
+  
+
+  nav#navigation .menu ul li a:hover {
+    opacity: 1;
+    font-weight: 700;
+  }
+
+  nav#navigation .menu ul li a::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background-color: var(--brand-violet-light);
+
+    position: relative;
+    bottom: -2rem;    
+    left: -0.5rem;
+
+    display: block;
+
+    transition: width 0.2s;
+  }
+
+  nav#navigation.scroll .menu ul li a::after {      
+    background-color: white;
+   
+  }
+
+  nav#navigation .menu ul li a:hover::after {
+    padding-inline: 0.8rem;
+    width: 100%;   
+  }
+
+  nav#navigation .menu a.button:hover {
+    background-color: var(--brand-violet-light);
+    color: white;
+    border: none;
+    transition: background-color 400ms
+  }
+
+  nav#navigation.scroll .menu a.button:hover {
+    background-color: white;
+    color: var(--brand-violet-light);
+    border: none;
+    transition: background-color 400ms ;
+  }
+
+
+  
+
+
+}
 
 
 

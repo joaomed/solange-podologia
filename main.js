@@ -1,5 +1,7 @@
-// quando rodar o Scroll
+window.addEventListener('scroll', onScroll)
 
+onScroll()
+// quando rodar o Scroll
 function onScroll() {
   showNavOnScroll()
   showBackToTopButtonOnScroll()
@@ -14,7 +16,7 @@ function showNavOnScroll() {
 }
 
 function showBackToTopButtonOnScroll() {
-  if (scrollY < 1000) {
+  if (scrollY < 600) {
     backToTopButton.classList.remove('show')
   } else {
     backToTopButton.classList.add('show')
