@@ -38,6 +38,7 @@ function activateMenuAtCurrentSection(section) {
 }
 
 function showNavOnScroll() {
+  const navigation = document.querySelector(`#navigation`)
   if (scrollY == 0) {
     navigation.classList.remove('scroll')
   } else {
@@ -46,6 +47,7 @@ function showNavOnScroll() {
 }
 
 function showBackToTopButtonOnScroll() {
+  const navigation = document.querySelector(`#backToTopButton`)
   if (scrollY < 600) {
     backToTopButton.classList.remove('show')
   } else {
